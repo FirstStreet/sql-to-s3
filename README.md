@@ -9,7 +9,7 @@ This is an image that executes `mysqldump` to provided hosts and sends the .sql 
 ### Set Env Vars
 
 - HOST=mysql host
-- DB=mysql db name
+- DB_NAME=mysql database name
 - USER=mysql username
 - PASS=mysql pass
 - BUCKET=s3 bucket name (use s3://bucket)
@@ -21,7 +21,7 @@ This is an image that executes `mysqldump` to provided hosts and sends the .sql 
 ### From host to S3
 
 ```
-docker run -e HOST=mysql -e DB=database -e USER=user -e PASS=pass -e BUCKET=s3://bucket -e AWS_ACCESS_KEY_ID=abc123 -e AWS_SECRET_ACCESS_KEY=abc123 -e AWS_DEFAULT_REGION=us-east-1 -e OBJECT_NAME=backup.sql firststreet/sql-to-s3
+docker run -e HOST=mysql -e DB_NAME=database -e USER=user -e PASS=pass -e BUCKET=s3://bucket -e AWS_ACCESS_KEY_ID=abc123 -e AWS_SECRET_ACCESS_KEY=abc123 -e AWS_DEFAULT_REGION=us-east-1 -e OBJECT_NAME=backup.sql firststreet/sql-to-s3
 ```
 
 
@@ -30,5 +30,5 @@ docker run -e HOST=mysql -e DB=database -e USER=user -e PASS=pass -e BUCKET=s3:/
 Add `--entrypoint /import.sh`.
 
 ```
-docker run --entrypoint /import.sh -e HOST=mysql -e DB=database -e USER=user -e PASS=pass -e BUCKET=s3://bucket -e AWS_ACCESS_KEY_ID=abc123 -e AWS_SECRET_ACCESS_KEY=abc123 -e AWS_DEFAULT_REGION=us-east-1 -e OBJECT_NAME=backup.sql firststreet/sql-to-s3
+docker run --entrypoint /import.sh -e HOST=mysql -e DB_NAME=database -e USER=user -e PASS=pass -e BUCKET=s3://bucket -e AWS_ACCESS_KEY_ID=abc123 -e AWS_SECRET_ACCESS_KEY=abc123 -e AWS_DEFAULT_REGION=us-east-1 -e OBJECT_NAME=backup.sql firststreet/sql-to-s3
 ```
